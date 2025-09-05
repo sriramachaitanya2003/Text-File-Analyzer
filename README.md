@@ -11,4 +11,4 @@ This project contains a simple web application built with  **HTML, CSS, and Java
 - Clone the repository: In cmd -> git clone https://github.com/sriramachaitanya2003/Text-file-analyzer.git
 - Open the files in vs code or simply enter 'code .' in cmd
 - Copy the path of index.html file and paste it in the browser
-- Now the project is liove in your local machine.
+- Now the project is live in your local machine.
