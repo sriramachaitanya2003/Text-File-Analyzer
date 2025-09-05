@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text File Analyzer | Professional Text Analysis Tool</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="tfa.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1><i class="fas fa-file-alt"></i> Text File Analyzer</h1>
+        <p>
+          Comprehensive text analysis for TXT and DOCX documents with detailed
+          metrics
+        </p>
+      </div>
+
+      <div class="main-content">
+        <div class="upload-section">
+          <div class="file-drop-zone" id="dropZone">
+            <div class="upload-icon">
+              <i class="fas fa-cloud-upload-alt"></i>
+            </div>
+            <div class="upload-text">
+              Drag & drop your file or click to browse
+            </div>
+            <div class="upload-subtext">
+              Supported formats: .txt, .docx (Maximum size: 1MB)
+            </div>
+            <button
+              class="upload-btn"
+              onclick="document.getElementById('fileInput').click()"
+            >
+              <i class="fas fa-upload"></i> Select File
+            </button>
+            <input
+              type="file"
+              id="fileInput"
+              class="file-input"
+              accept=".txt,.doc,.docx"
+            />
+          </div>
+
+          <div class="file-info" id="fileInfo">
+            <i class="fas fa-file"></i>
+            <div>
+              <strong>Selected file:</strong> <span id="fileName"></span> (<span
+                id="fileSize"
+              ></span
+              >)
+            </div>
+          </div>
+
+          <div class="error" id="errorMsg">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="errorText"></span>
+          </div>
+        </div>
+
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+          <p>Analyzing document content...</p>
+        </div>
+
+        <div class="results" id="results">
+          <div class="results-header">
+            <h2 class="results-title">Analysis Results</h2>
+            <button class="export-btn" id="exportBtn">
+              <i class="fas fa-download"></i> Export Report
+            </button>
+          </div>
+
+          <div class="results-grid">
+            <div class="metric-card">
+              <div class="metric-title">
+                <span class="stat-icon"><i class="fas fa-font"></i></span> Total
+                Characters
+              </div>
+              <div class="metric-value" id="totalChars">0</div>
+              <div class="metric-subtitle">
+                With spaces: <span id="totalCharsWithSpaces">0</span>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-title">
+                <span class="stat-icon"><i class="fas fa-align-left"></i></span>
+                Total Words
+              </div>
+              <div class="metric-value" id="totalWords">0</div>
+              <div class="metric-subtitle">
+                Unique: <span id="uniqueWords">0</span>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-title">
+                <span class="stat-icon"><i class="fas fa-sentence"></i></span>
+                Sentences
+              </div>
+              <div class="metric-value" id="totalSentences">0</div>
+              <div class="metric-subtitle">Average words per sentence</div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-title">
+                <span class="stat-icon"><i class="fas fa-ruler"></i></span>
+                Average Word Length
+              </div>
+              <div class="metric-value" id="avgWordLength">0</div>
+              <div class="metric-subtitle">characters</div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-title">
+                <span class="stat-icon"><i class="fas fa-palindrome"></i></span>
+                Palindromic Words
+              </div>
+              <div class="metric-value" id="palindromes">0</div>
+              <div class="metric-subtitle">≥3 characters</div>
+            </div>
+          </div>
+
+          <div class="detailed-section">
+            <div class="section-title">
+              <i class="fas fa-chart-bar"></i> Top 10 Most Frequent Words
+            </div>
+            <div class="word-list" id="topWords"></div>
+          </div>
+
+          <div class="detailed-section">
+            <div class="section-title">
+              <i class="fas fa-link"></i> Top 5 Bigrams (Word Pairs)
+            </div>
+            <div class="word-list" id="topBigrams"></div>
+          </div>
+
+          <div class="detailed-section">
+            <div class="section-title">
+              <i class="fas fa-longest-sentence"></i> Longest Sentence
+            </div>
+            <div class="longest-sentence" id="longestSentence"></div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <p>&copy; 2025 Srirama Chaitanya</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="tfa.js"></script>
+  </body>
+</html>
